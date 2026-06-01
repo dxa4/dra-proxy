@@ -12,8 +12,6 @@ jobs:
         include:
           - os: windows-latest
             artifact: x5-proxy-win.exe
-          - os: macos-13
-            artifact: x5-proxy-macos-x64
           - os: macos-latest
             artifact: x5-proxy-macos-arm64
 
