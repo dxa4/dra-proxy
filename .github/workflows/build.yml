@@ -26,7 +26,7 @@ jobs:
         with:
           node-version: '22'
 
-      - name: Build SEA (macOS / Linux)
+      - name: Build SEA (macOS)
         if: runner.os != 'Windows'
         run: |
           echo '{"main":"local.js","output":"sea-prep.blob","disableExperimentalSEAWarning":true}' > sea-config.json
@@ -35,6 +35,7 @@ jobs:
           codesign --remove-signature ${{ matrix.artifact }} || true
           npx postject ${{ matrix.artifact }} NODE_SEA_BLOB sea-prep.blob --sentinel-fuse NODE_SEA_FUSE_fce680ab2cc467b6e072b8b5df1996b2 --macho-segment-name NODE_SEA
           codesign --sign - ${{ matrix.artifact }} || true
+        working-directory: proxy
 
       - name: Build SEA (Windows)
         if: runner.os == 'Windows'
@@ -44,12 +45,13 @@ jobs:
           node --experimental-sea-config sea-config.json
           Copy-Item (node -e "process.stdout.write(process.execPath)") x5-proxy-win.exe
           npx postject x5-proxy-win.exe NODE_SEA_BLOB sea-prep.blob --sentinel-fuse NODE_SEA_FUSE_fce680ab2cc467b6e072b8b5df1996b2
+        working-directory: proxy
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.artifact }}
-          path: ${{ matrix.artifact }}
+          path: proxy/${{ matrix.artifact }}
 
   release:
     needs: build
