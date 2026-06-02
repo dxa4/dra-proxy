@@ -52,7 +52,7 @@ chmod +x ~/Downloads/x5-proxy-macos-arm64
 
 1. Открой плагин **Design Review Agent** в Figma
 2. Перейди в **Настройки → X5 Copilot**
-3. Введи свой API-ключ
+3. Введи свой API-ключ (скопируй его с этой страницы https://copilot.x5.ru/copilot-api)
 4. Нажми **Сохранить**
 
 API URL и модель уже прописаны автоматически.
