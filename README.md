@@ -1,6 +1,6 @@
 # X5 Copilot Proxy
 
-Локальный прокси-сервер для работы с X5 Copilot API из Figma-плагина Design Review Agent.
+Локальный прокси-сервер для работы с X5 Copilot API из Figma-плагина.
 
 ## Зачем это нужно
 
@@ -50,8 +50,8 @@ chmod +x ~/Downloads/x5-proxy-macos-arm64
 
 После запуска прокси:
 
-1. Открой плагин **Design Review Agent** в Figma
-2. Перейди в **Настройки → X5 Copilot**
+1. Открой плагин в Figma
+2. Перейди в настройки
 3. Введи свой API-ключ (скопируй его с этой страницы https://copilot.x5.ru/copilot-api)
 4. Нажми **Сохранить**
 
