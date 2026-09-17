@@ -10,28 +10,29 @@ Figma-плагины не могут обращаться к корпорати�
 
 ## Установка и запуск
 
-### macOS (M1/M2/M3)
+**macOS (Apple Silicon: M1/M2/M3/M4):**
 
-1. Скачай файл `x5-proxy-macos-arm64` со страницы [Releases](../../releases/latest)
-2. Открой **Терминал** (`Cmd+Space` → «Терминал»)
-3. Выполни команды:
+Быстрый способ — откройте Terminal и вставьте:
+```bash
+curl -fsSL https://raw.githubusercontent.com/dxa4/dra-proxy/main/install.sh | bash
+```
+Скрипт сам скачает актуальный файл, даст ему права на запуск, снимет карантин macOS и запустит прокси.
 
+Если появится сообщение «нельзя открыть, потому что не удалось проверить разработчика» — это защита Gatekeeper. Разрешить: Системные настройки → Конфиденциальность и безопасность → внизу страницы «Открыть в любом случае» (кнопка появляется после первой попытки запуска). Либо в Терминале:
+```bash
+xattr -d com.apple.quarantine ~/.x5-proxy/x5-proxy
+```
+
+Ручной способ (если автоматический не сработал): скачайте `x5-proxy-macos-arm64` из Releases, затем в Терминале:
 ```bash
 chmod +x ~/Downloads/x5-proxy-macos-arm64
+xattr -d com.apple.quarantine ~/Downloads/x5-proxy-macos-arm64
 ~/Downloads/x5-proxy-macos-arm64
 ```
 
-> Если файл лежит не в Downloads, замени путь. Например, для рабочего стола:
-> ```bash
-> chmod +x ~/Desktop/x5-proxy-macos-arm64
-> ~/Desktop/x5-proxy-macos-arm64
-> ```
+Сейчас есть сборка только под Apple Silicon — для Intel Mac подходящего файла пока нет.
 
-4. Убедись что видишь в терминале:
-```
-✅ Прокси запущен: http://localhost:3000/
-```
-
+Подтверждение запуска: `"✅ Прокси запущен: http://localhost:3000/"`
 ---
 
 ### Windows
